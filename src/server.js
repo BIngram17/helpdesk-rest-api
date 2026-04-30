@@ -1,14 +1,15 @@
 const express = require("express");
+const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
 const app = express();
+
+app.use(cors());
+app.use(express.json());
 const prisma = new PrismaClient();
 const PORT = 3000;
 const JWT_SECRET = "helpdesk_secret_key";
-
-app.use(express.json());
 
 // Home route
 app.get("/", (req, res) => {
